@@ -21,6 +21,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 saiday. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string>HakkaSaverView</string>
+	<string>HakkaSaver</string>
 </dict>
 </plist>

@@ -7,15 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		83F82D4D21DD34E90057F813 /* HakkaSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = 83F82D4C21DD34E90057F813 /* HakkaSaverView.h */; };
-		83F82D4F21DD34E90057F813 /* HakkaSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F82D4E21DD34E90057F813 /* HakkaSaverView.m */; };
+		83F82D5721DD386A0057F813 /* HakkaSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F82D5621DD386A0057F813 /* HakkaSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		83F82D4921DD34E90057F813 /* HakkaSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HakkaSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		83F82D4C21DD34E90057F813 /* HakkaSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HakkaSaverView.h; sourceTree = "<group>"; };
-		83F82D4E21DD34E90057F813 /* HakkaSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HakkaSaverView.m; sourceTree = "<group>"; };
 		83F82D5021DD34E90057F813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83F82D5621DD386A0057F813 /* HakkaSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HakkaSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +46,7 @@
 		83F82D4B21DD34E90057F813 /* HakkaSaver */ = {
 			isa = PBXGroup;
 			children = (
-				83F82D4C21DD34E90057F813 /* HakkaSaverView.h */,
-				83F82D4E21DD34E90057F813 /* HakkaSaverView.m */,
+				83F82D5621DD386A0057F813 /* HakkaSaver.swift */,
 				83F82D5021DD34E90057F813 /* Info.plist */,
 			);
 			path = HakkaSaver;
@@ -62,7 +59,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83F82D4D21DD34E90057F813 /* HakkaSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +94,7 @@
 				TargetAttributes = {
 					83F82D4821DD34E90057F813 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -133,7 +130,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83F82D4F21DD34E90057F813 /* HakkaSaverView.m in Sources */,
+				83F82D5721DD386A0057F813 /* HakkaSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,13 +251,22 @@
 		83F82D5421DD34E90057F813 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3J7D45E984;
 				INFOPLIST_FILE = HakkaSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.saiday.HakkaSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -268,13 +274,21 @@
 		83F82D5521DD34E90057F813 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3J7D45E984;
 				INFOPLIST_FILE = HakkaSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.saiday.HakkaSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
