@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8334CB75222DA7A600F5EA1C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8334CB74222DA7A600F5EA1C /* UserDefaultsManager.swift */; };
+		8334CB77222DAD4F00F5EA1C /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8334CB76222DAD4F00F5EA1C /* PreferencesWindowController.swift */; };
 		83F82D5721DD386A0057F813 /* HakkaSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F82D5621DD386A0057F813 /* HakkaSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8334CB74222DA7A600F5EA1C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		8334CB76222DAD4F00F5EA1C /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		83F82D4921DD34E90057F813 /* HakkaSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HakkaSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F82D5021DD34E90057F813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83F82D5621DD386A0057F813 /* HakkaSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HakkaSaver.swift; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 			children = (
 				83F82D5621DD386A0057F813 /* HakkaSaver.swift */,
 				83F82D5021DD34E90057F813 /* Info.plist */,
+				8334CB74222DA7A600F5EA1C /* UserDefaultsManager.swift */,
+				8334CB76222DAD4F00F5EA1C /* PreferencesWindowController.swift */,
 			);
 			path = HakkaSaver;
 			sourceTree = "<group>";
@@ -130,6 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8334CB77222DAD4F00F5EA1C /* PreferencesWindowController.swift in Sources */,
+				8334CB75222DA7A600F5EA1C /* UserDefaultsManager.swift in Sources */,
 				83F82D5721DD386A0057F813 /* HakkaSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
