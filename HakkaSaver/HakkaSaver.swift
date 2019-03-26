@@ -18,6 +18,12 @@ class HakkaSaver: ScreenSaverView {
     // MARK: new properties
     typealias WindowInfo = [String: Any]
     let ScreenSaverWindowLayer = CGWindowLevelForKey(.screenSaverWindow)
+    
+    lazy var preferencesWindowController: PreferencesWindowController = {
+        let pref = PreferencesWindowController()
+        pref.delegate = self
+        return pref
+    }()
 
     var displayID: CGDirectDisplayID? {
         guard let devInfo = window?.screen?.deviceDescription else {
@@ -46,7 +52,7 @@ class HakkaSaver: ScreenSaverView {
     required init?(coder decoder: NSCoder) {
         fatalError("not impletemted")
     }
-    
+
     func screenshotImage() -> CGImage? {
         guard let onscreenWindows = CGWindowListCopyWindowInfo(.optionOnScreenOnly, kCGNullWindowID) as! [WindowInfo]? else {
             os_log("No windows are on screen", type: .info)
@@ -91,5 +97,21 @@ class HakkaSaver: ScreenSaverView {
                                from: blurredScreenshot.extent,
                                operation: .copy,
                                fraction: 1.0)
+    }
+}
+
+extension HakkaSaver {
+    override var hasConfigureSheet: Bool {
+        return true
+    }
+    
+    override var configureSheet: NSWindow? {
+        return preferencesWindowController.window
+    }
+}
+
+extension HakkaSaver: WindowSheetDelegate {
+    func sheetClosed(code: NSApplication.ModalResponse) {
+        needsDisplay = code == .OK
     }
 }
