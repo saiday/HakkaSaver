@@ -37,7 +37,7 @@ class PreferencesWindowController: NSWindowController {
     }
     
     override var windowNibName: NSNib.Name? {
-        return NSNib.Name("arsars")
+        return NSNib.Name("anything")
     }
     
     func setupSubviews(window: NSWindow) {
