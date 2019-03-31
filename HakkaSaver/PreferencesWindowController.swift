@@ -8,7 +8,6 @@
 
 import Cocoa
 import ScreenSaver
-import os
 
 protocol WindowSheetDelegate: AnyObject {
     func sheetClosed(code: NSApplication.ModalResponse)

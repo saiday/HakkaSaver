@@ -7,7 +7,6 @@
 //
 
 import ScreenSaver
-import os
 
 @objc(HakkaSaver)
 class HakkaSaver: ScreenSaverView {
@@ -15,7 +14,6 @@ class HakkaSaver: ScreenSaverView {
     var imageView: NSImageView!
     var label: NSTextField!
     
-    // MARK: new properties
     typealias WindowInfo = [String: Any]
     let ScreenSaverWindowLayer = CGWindowLevelForKey(.screenSaverWindow)
     
@@ -27,8 +25,7 @@ class HakkaSaver: ScreenSaverView {
 
     var displayID: CGDirectDisplayID? {
         guard let devInfo = window?.screen?.deviceDescription else {
-            os_log("Could not get device information for ScreenSaverView's screen",
-                   type: .error)
+//            os_log("Could not get device information for ScreenSaverView's screen", type: .error)
             return nil
         }
         
@@ -55,7 +52,6 @@ class HakkaSaver: ScreenSaverView {
 
     func screenshotImage() -> CGImage? {
         guard let onscreenWindows = CGWindowListCopyWindowInfo(.optionOnScreenOnly, kCGNullWindowID) as! [WindowInfo]? else {
-            os_log("No windows are on screen", type: .info)
             return nil
         }
         
@@ -65,12 +61,8 @@ class HakkaSaver: ScreenSaverView {
         
         // TODO: though CGWindowLevel > SCreenSaverWindowLayer but it still have chance see lock screen captured
         if let topWindow = onscreenWindows.filter({ $0["kCGWindowLayer"] as! CGWindowLevel > ScreenSaverWindowLayer }).reversed().first {
-            os_log("aaaaaaaa had top window", type: .info)
-            NSLog("aaaaaaaa had top window")
             return CGWindowListCreateImage(displayBounds, .optionOnScreenBelowWindow, topWindow["kCGWindowNumber"]! as! CGWindowID, .bestResolution)
         } else {
-            os_log("aaaaaaaa no top window", type: .info)
-            NSLog("aaaaaaaa no top window")
             return CGWindowListCreateImage(displayBounds, .optionOnScreenOnly, kCGNullWindowID, .bestResolution)
         }
     }
@@ -79,7 +71,7 @@ class HakkaSaver: ScreenSaverView {
         super.draw(rect)
         
         guard let screenShot = screenshotImage() else {
-            os_log("Could not take a screenshot")
+//            os_log("Could not take a screenshot")
 
             NSColor.clear.setFill()
             __NSRectFill(self.bounds)

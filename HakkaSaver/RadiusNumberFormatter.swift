@@ -24,12 +24,10 @@ class RadiusNumberFormatter: NumberFormatter {
     }
     
     override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
-        // Check if field is empty
         guard !partialString.isEmpty else {
             return true
         }
         
-        // Check input is only a positive decimal number/integer
         let decimalRegexp = try! NSRegularExpression(pattern: "[0-9.]", options: .caseInsensitive)
         let partialLen = partialString.count
         
@@ -37,12 +35,10 @@ class RadiusNumberFormatter: NumberFormatter {
             return false
         }
         
-        // Check input can be parsed into a number
         guard let value = Double(partialString) else {
             return false
         }
         
-        // Check input isn't stupidly big
         guard value <= 25 else {
             newString?.pointee = "25"
             return false

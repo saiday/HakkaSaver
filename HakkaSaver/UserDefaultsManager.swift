@@ -8,7 +8,6 @@
 
 import Foundation
 import ScreenSaver
-import os
 
 class UserDefaultsManager {
     static let shared = UserDefaultsManager()
@@ -26,7 +25,6 @@ class UserDefaultsManager {
     private lazy var userDefaults: UserDefaults = {
         guard let screenSaverUserDefaults = ScreenSaverDefaults(forModuleWithName: Keys.appName) else {
             let message = "Cannot load ScreenSaverDefaults for \(Keys.appName)"
-            os_log(OSLogType.error, "%@", message)
             return UserDefaults()
         }
         
