@@ -10,6 +10,8 @@
 		8334CB75222DA7A600F5EA1C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8334CB74222DA7A600F5EA1C /* UserDefaultsManager.swift */; };
 		8334CB77222DAD4F00F5EA1C /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8334CB76222DAD4F00F5EA1C /* PreferencesWindowController.swift */; };
 		8338EC83224AA52700E437BF /* RadiusNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338EC82224AA52700E437BF /* RadiusNumberFormatter.swift */; };
+		8338EC902250D0BF00E437BF /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8338EC8E2250D0BF00E437BF /* thumbnail@2x.png */; };
+		8338EC912250D0BF00E437BF /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 8338EC8F2250D0BF00E437BF /* thumbnail.png */; };
 		83F82D5721DD386A0057F813 /* HakkaSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F82D5621DD386A0057F813 /* HakkaSaver.swift */; };
 /* End PBXBuildFile section */
 
@@ -17,6 +19,8 @@
 		8334CB74222DA7A600F5EA1C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		8334CB76222DAD4F00F5EA1C /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		8338EC82224AA52700E437BF /* RadiusNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusNumberFormatter.swift; sourceTree = "<group>"; };
+		8338EC8E2250D0BF00E437BF /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
+		8338EC8F2250D0BF00E437BF /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		83F82D4921DD34E90057F813 /* HakkaSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HakkaSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F82D5021DD34E90057F813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83F82D5621DD386A0057F813 /* HakkaSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HakkaSaver.swift; sourceTree = "<group>"; };
@@ -33,6 +37,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8338EC892250C9BC00E437BF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83F82D5021DD34E90057F813 /* Info.plist */,
+				8338EC8F2250D0BF00E437BF /* thumbnail.png */,
+				8338EC8E2250D0BF00E437BF /* thumbnail@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		83F82D3F21DD34E90057F813 = {
 			isa = PBXGroup;
 			children = (
@@ -52,8 +66,8 @@
 		83F82D4B21DD34E90057F813 /* HakkaSaver */ = {
 			isa = PBXGroup;
 			children = (
+				8338EC892250C9BC00E437BF /* Supporting Files */,
 				83F82D5621DD386A0057F813 /* HakkaSaver.swift */,
-				83F82D5021DD34E90057F813 /* Info.plist */,
 				8334CB74222DA7A600F5EA1C /* UserDefaultsManager.swift */,
 				8334CB76222DAD4F00F5EA1C /* PreferencesWindowController.swift */,
 				8338EC82224AA52700E437BF /* RadiusNumberFormatter.swift */,
@@ -129,6 +143,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8338EC912250D0BF00E437BF /* thumbnail.png in Resources */,
+				8338EC902250D0BF00E437BF /* thumbnail@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
