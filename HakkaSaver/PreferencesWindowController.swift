@@ -8,6 +8,7 @@
 
 import Cocoa
 import ScreenSaver
+import os
 
 protocol WindowSheetDelegate: AnyObject {
     func sheetClosed(code: NSApplication.ModalResponse)
@@ -18,6 +19,7 @@ class PreferencesWindowController: NSWindowController {
     weak var doneButton: NSButton!
     weak var cancelButton: NSButton!
     weak var blurRadiusTextField: NSTextField!
+    weak var blurRadiusSlider: NSSlider!
 
     override func loadWindow() {
         window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0),
@@ -45,12 +47,23 @@ class PreferencesWindowController: NSWindowController {
         let formatter = RadiusNumberFormatter()
         blurRadiusTextField.formatter = formatter
         blurRadiusTextField.doubleValue = UserDefaultsManager.shared.blurRadius
+        blurRadiusTextField.isEditable = false
+        blurRadiusTextField.isBezeled = false
+        blurRadiusTextField.isSelectable = false
+        blurRadiusTextField.drawsBackground = false
         self.blurRadiusTextField = blurRadiusTextField
         
-        let sliderLabal = NSTextField(labelWithString: "Blur Radius: ")
+        let blurRadiusSlider = NSSlider(target: self, action: #selector(sliderValueChanged(sender:)))
+        blurRadiusSlider.minValue = 0
+        blurRadiusSlider.maxValue = 25
+        blurRadiusSlider.doubleValue = UserDefaultsManager.shared.blurRadius
+        self.blurRadiusSlider = blurRadiusSlider
         
-        let sliderStackView = NSStackView(views: [sliderLabal, blurRadiusTextField])
-        sliderStackView.orientation = .horizontal
+        let infoLabal = NSTextField(labelWithString: "Blur Radius: ")
+        
+        let infoStackView = NSStackView(views: [infoLabal, blurRadiusTextField])
+        infoStackView.distribution = .fillEqually
+        infoStackView.orientation = .horizontal
         
         let cancelButton = NSButton(title: "Cancel", target: self, action: #selector(windowClosed(sender:)))
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
@@ -64,11 +77,12 @@ class PreferencesWindowController: NSWindowController {
         let buttonStackView = NSStackView(views: [cancelButton, doneButton])
         buttonStackView.orientation = .horizontal
         
-        let controlStackView = NSStackView(views: [sliderStackView, buttonStackView])
+        let controlStackView = NSStackView(views: [infoStackView, blurRadiusSlider, buttonStackView])
         controlStackView.orientation = .vertical
         controlStackView.spacing = 20
 
         window.contentView?.addSubview(controlStackView)
+        
         // 淪落到用原生 AutoLayout API
         controlStackView.trailingAnchor.constraint(equalTo: window.contentView!.trailingAnchor, constant: -20).isActive = true
         controlStackView.leadingAnchor.constraint(equalTo: window.contentView!.leadingAnchor, constant: 20).isActive = true
@@ -80,10 +94,14 @@ class PreferencesWindowController: NSWindowController {
         let response: NSApplication.ModalResponse = sender == doneButton ? .OK : .cancel
         
         if case .OK = response {
-            UserDefaultsManager.shared.blurRadius = blurRadiusTextField.doubleValue
+            UserDefaultsManager.shared.blurRadius = blurRadiusSlider.doubleValue
         }
         
         window?.sheetParent?.endSheet(window!, returnCode: response)
         delegate?.sheetClosed(code: response)
+    }
+    
+    @objc func sliderValueChanged(sender: NSSlider) {
+        blurRadiusTextField.doubleValue = sender.doubleValue
     }
 }
