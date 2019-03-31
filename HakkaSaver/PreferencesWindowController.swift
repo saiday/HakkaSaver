@@ -54,8 +54,10 @@ class PreferencesWindowController: NSWindowController {
         
         let blurRadiusSlider = NSSlider(target: self, action: #selector(sliderValueChanged(sender:)))
         blurRadiusSlider.minValue = 0
-        blurRadiusSlider.maxValue = 25
+        blurRadiusSlider.maxValue = 20
         blurRadiusSlider.doubleValue = UserDefaultsManager.shared.blurRadius
+        blurRadiusSlider.tickMarkPosition = .below
+        blurRadiusSlider.numberOfTickMarks = 11
         self.blurRadiusSlider = blurRadiusSlider
         
         let infoLabal = NSTextField(labelWithString: "Blur Radius: ")
@@ -101,6 +103,13 @@ class PreferencesWindowController: NSWindowController {
     }
     
     @objc func sliderValueChanged(sender: NSSlider) {
-        blurRadiusTextField.doubleValue = sender.doubleValue
+        var radius = sender.doubleValue
+        let closeToTick = abs(radius - sender.closestTickMarkValue(toValue: radius)) < 0.2
+        if (closeToTick) {
+            radius = sender.closestTickMarkValue(toValue: radius)
+        }
+        
+        blurRadiusTextField.doubleValue = radius
+        sender.doubleValue = radius
     }
 }

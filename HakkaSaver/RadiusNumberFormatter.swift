@@ -39,8 +39,8 @@ class RadiusNumberFormatter: NumberFormatter {
             return false
         }
         
-        guard value <= 25 else {
-            newString?.pointee = "25"
+        guard value <= 20 else {
+            newString?.pointee = "20"
             return false
         }
         
