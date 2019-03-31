@@ -89,10 +89,15 @@ class HakkaSaver: ScreenSaverView {
 
             return
         }
-        
-        let blurredScreenshot = CIImage(cgImage: screenShot).applyingGaussianBlur(sigma: UserDefaultsManager.shared.blurRadius)
-//        let blurredScreenshot = CIImage(cgImage: screenShot)
 
+        let context = CIContext(options: nil)
+        let originImage = CIImage(cgImage: screenShot)
+        let filter = CIFilter(name: "CIGaussianBlur")!
+        filter.setValue(originImage, forKey: kCIInputImageKey)
+        filter.setValue(UserDefaultsManager.shared.blurRadius, forKey: "inputRadius")
+        let resultImage = filter.value(forKey: kCIOutputImageKey) as! CIImage
+        let resizedImage = context.createCGImage(resultImage, from: originImage.extent)!
+        let blurredScreenshot = CIImage(cgImage: resizedImage)
         blurredScreenshot.draw(in: rect,
                                from: blurredScreenshot.extent,
                                operation: .copy,
